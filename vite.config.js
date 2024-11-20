@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "./index.html"),
         login: resolve(__dirname, "./auth/login/index.html"),
+        profile: resolve(__dirname, "./profile/index.html"),
       },
     },
   },
