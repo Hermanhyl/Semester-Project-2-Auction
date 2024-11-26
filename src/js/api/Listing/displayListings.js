@@ -25,7 +25,7 @@ export const displayListings = (listings, userName) => {
 
         const sellerName = document.createElement("p");
         sellerName.innerText = listing.seller?.name || "Unknown Seller";
-        sellerName.className = "postAuthor mb-2 mt-2";
+        sellerName.className = "listingName mb-2 mt-2";
 
         const title = document.createElement("h2");
         title.innerText = listing.title;
@@ -53,8 +53,10 @@ export const displayListings = (listings, userName) => {
         const viewButton = document.createElement("button")
         viewButton.innerText = "view"
         viewButton.className = "viewButton"
+        
         viewButton.addEventListener('click', () => {
-            window.location.href = "post/index.html"
+            window.location.href = `/post/?id=${listing.id}`;
+            localStorage.setItem("listingId", JSON.stringify(listing.id))
         });
 
         const bidButton = document.createElement('button');
@@ -71,7 +73,7 @@ export const displayListings = (listings, userName) => {
         });
   
 
-        container.append(image, sellerName, title, description,  currentBid, bidInput, viewButton, bidButton);
+        container.append(image, sellerName, title, description, currentBid, bidInput, viewButton, bidButton);
         listingContainer.appendChild(container);
 
     });
