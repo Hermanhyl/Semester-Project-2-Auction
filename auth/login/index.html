@@ -4,21 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="/src/main.js"></script>
-    <title>Document</title>
+    <title>Login page</title>
 </head>
-<body class="bg-red-600">
+<body class="bg-gray-500">
 
     <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/auth/login/">Login</a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-            </ul>
-        </nav>
+    
     </header>
+
+    <main>
+
+        <div>
+            <img src="/Images/logo.png" alt="Logo">
+        </div>
+
+        <form id="login" >
+            <div>
+                <label for="email">Email</label>
+                <input 
+                id="email" 
+                type="email"
+                name="email"
+                required
+                title="email"
+                placeholder="Email"
+                class=""
+                >
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input 
+                id="password"
+                type="password"
+                title="password"
+                name="password"
+                placeholder="Password"
+                class=""
+                >
+            </div>
+            <div>
+                <a href="/auth/register/">Register</a>
+                <button id="loginButton">Login</button>
+            </div>
+        </form>
+
+    </main>
     
 </body>
 </html>
