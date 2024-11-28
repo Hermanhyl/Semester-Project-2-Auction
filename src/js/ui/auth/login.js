@@ -9,7 +9,7 @@ export async function onlogin(event) {
         email: formData.get("email"),
         password: formData.get("password"),
     }
-    console.log("login data", loginData);
+    console.log("login data",loginData);
     
     login(loginData);
 }
