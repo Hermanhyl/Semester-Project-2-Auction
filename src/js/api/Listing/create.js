@@ -4,7 +4,6 @@ import { headers } from "../headers"
 
 export async function createListing(title, description, endsAt, tags, media) {
     
-
     const body = {
         title,
         description,
