@@ -2,7 +2,8 @@ export function generateNavbar() {
     const navbarItems = [
         { name: "Home", link: "/" },
         { name: "Profile", link: "/profile/" },
-        { name: "Create Listing", link: "/post/create/" }
+        { name: "Create Listing", link: "/post/create/" },
+        { name: "Login", link: "/auth/login/" }
     ];
 
     const navbar = document.getElementById("navbar");
