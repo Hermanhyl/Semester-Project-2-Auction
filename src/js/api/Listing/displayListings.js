@@ -1,5 +1,3 @@
-
-
 export const displayListings = (listings, userName) => {
     const listingContainer = document.getElementById("listingContainer");
 
