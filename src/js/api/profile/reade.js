@@ -6,8 +6,13 @@ export async function readProfile(name) {
         throw new Error("Username is needed to fetch the profile.");
     }
 
+    const params = new URLSearchParams({
+        _listings: true,
+        _wins: true,
+    });
+
     try {
-        const response = await fetch(`${API_AUCTION_PROFILES}/${name}`, {
+        const response = await fetch(`${API_AUCTION_PROFILES}/${name}?${params}`, {
             method: "GET",
             headers: headers(),
         });
@@ -26,15 +31,10 @@ export async function readProfile(name) {
     }
 }
 
-export async function readProfiles(limit = 10, page = 1) {
+export async function readProfiles(name) {
     try {
-        // Build the query parameters
-        const params = new URLSearchParams({
-            limit: limit.toString(),
-            page: page.toString(),
-        });
-
-        const url = `${API_AUCTION_PROFILES}?${params.toString()}`;
+        
+        const url = (`${API_AUCTION_PROFILES}?${name}/bids`);
 
         // Fetch the list of profiles
         const response = await fetch(url, {
@@ -55,3 +55,33 @@ export async function readProfiles(limit = 10, page = 1) {
         throw error;
     }
 }
+
+// export async function readProfiles(limit = 10, page = 1) {
+//     try {
+//         // Build the query parameters
+//         const params = new URLSearchParams({
+//             limit: limit.toString(),
+//             page: page.toString(),
+//         });
+
+//         const url = `${API_AUCTION_PROFILES}?${params.toString()}`;
+
+//         // Fetch the list of profiles
+//         const response = await fetch(url, {
+//             method: "GET",
+//             headers: headers(),
+//         });
+
+//         // Check for response status
+//         if (!response.ok) {
+//             throw new Error(`Failed to fetch profiles. Status: ${response.status}`);
+//         }
+
+//         // Parse and return the list of profiles
+//         const profiles = await response.json();
+//         return profiles;
+//     } catch (error) {
+//         console.error("Error fetching profiles:", error);
+//         throw error;
+//     }
+// }
