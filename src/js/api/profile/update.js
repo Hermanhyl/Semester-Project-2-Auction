@@ -1,14 +1,15 @@
 import { API_AUCTION_PROFILES } from "../constants";
 import { headers } from "../headers";
 
-export async function updateProfile(name, { avatar, banner }) {
+export async function updateProfile(name, { avatar, banner, bio }) {
     if(!name) {
         throw new Error("Username is requiered to update the profile.");
     }
-
+    
     const body = {
         avatar,
         banner,
+        bio
     }
 
     try {
@@ -23,6 +24,8 @@ export async function updateProfile(name, { avatar, banner }) {
         }
 
         const updateProfile = await response.json();
+        console.log("response", updateProfile);
+        
         return updateProfile;
     } catch (error) {
         console.error("Error updating profile", error);
