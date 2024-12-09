@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/fawIcon.png" type="image/png">
+    <script type="module" src="/src/main.js"></script>
+    <title>Single post Page</title>
 </head>
-<body>
+<body class="bg-slate-700">
+
+    <div id="navbar"></div>
+
+    <div>
+        <h1>Single post page</h1>
+    </div>
+
+    <div id="singleListingContainer"></div>
+
+    <div id="biddersModal" class="modal hidden z-50">
+        <div class="modal-content">
+            <span id="closeModal" class="close-button">&times;</span>
+            <h2>Previous Bidders</h2>
+            <div id="biddersList"></div>
+        </div>
+    </div>
     
 </body>
 </html>
