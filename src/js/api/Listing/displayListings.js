@@ -1,8 +1,36 @@
-export const displayListings = (listings, userName) => {
+import { onBid, showBidders } from "../../ui/listing/bid";
+
+
+const initializeModalListeners = () => {
+    const closeModalButton = document.getElementById("closeModal");
+    const biddersModal = document.getElementById("biddersModal");
+  
+    if (!closeModalButton || !biddersModal) {
+      console.error("Modal or close button not found in DOM.");
+      return;
+    }
+  
+    closeModalButton.addEventListener("click", () => {
+      biddersModal.classList.add("hidden");
+    });
+  
+    window.addEventListener("click", (event) => {
+      if (event.target === biddersModal) {
+        biddersModal.classList.add("hidden");
+      }
+    });
+  };
+  
+  
+  document.addEventListener("DOMContentLoaded", initializeModalListeners);
+
+
+export const displayListings = (listings) => {
     const listingContainer = document.getElementById("listingContainer");
+    console.log("listings", listings);
 
     if (!listingContainer) {
-        console.error("No container with id `pastcontainer` found");
+        console.error("No container with id `listingContainer` found");
         return;
     }
 
@@ -42,37 +70,54 @@ export const displayListings = (listings, userName) => {
             currentBid.innerText = "No Bids Yet";
         }
 
-        const bidInput = document.createElement('input');
-        bidInput.type = 'number';
-        bidInput.placeholder = '0.00';
-        bidInput.min = `0`
-        bidInput.className = 'bidInput';
+        // Create the bid form
+        const bidForm = document.createElement("form");
+        bidForm.className = "bidForm";
 
-        const viewButton = document.createElement("button")
-        viewButton.innerText = "view"
-        viewButton.className = "viewButton"
-        
-        viewButton.addEventListener('click', () => {
-            window.location.href = `/post/?id=${listing.id}`;
-            localStorage.setItem("listingId", JSON.stringify(listing.id))
-        });
+        const bidInput = document.createElement("input");
+        bidInput.name = "bidInput";
+        bidInput.type = "number";
+        bidInput.placeholder = "0.00";
+        bidInput.min = "0";
+        bidInput.className = "bidInput";
 
-        const bidButton = document.createElement('button');
+        // Create the submit button
+        const bidButton = document.createElement("button");
+        bidButton.type = "submit";
         bidButton.innerText = "Place Bid";
         bidButton.className = "bidButton";
-        bidButton.addEventListener('click', () => {
-            const bidValue = parseFloat(bidInput.value);
-            if (isNaN(bidValue) || bidValue <= 0) {
-                alert("Please enter a valid bid amount.");
-            } else {
-                console.log(`User ${userName} placed a bid of $${bidValue.toFixed(2)} on ${listing.title}`);
-                // Logic to handle bid submission (e.g., API call) would go here.
-            }
+
+        // Append input and button to the form
+        bidForm.appendChild(bidInput);
+        bidForm.appendChild(bidButton);
+
+        // Handle form submission
+        bidForm.addEventListener("submit",(event) => onBid(event, listing.id) );
+
+        const openModal = document.getElementById("biddersModal");
+
+        const viewBiddersButton = document.createElement("button");
+        viewBiddersButton.innerText = "View Bidders";
+        viewBiddersButton.id = "viewBidsButton"
+        viewBiddersButton.className = "viewBiddersButton";
+        viewBiddersButton.addEventListener("click", () => {
+            console.log("View Bidders button clicked for listing ID:", listing.id);
+            openModal.classList.add("flex")
+            showBidders(listing.id);
         });
-  
 
-        container.append(image, sellerName, title, description, currentBid, bidInput, viewButton, bidButton);
+        const viewButton = document.createElement("button");
+        viewButton.innerText = "View Listing";
+        viewButton.className = "viewButton";
+
+        viewButton.addEventListener('click', () => {
+            window.location.href = `/post/?id=${listing.id}`;
+            localStorage.setItem("listingId", JSON.stringify(listing.id));
+        });
+
+        container.append(image, sellerName, title, description, currentBid, bidForm, viewBiddersButton, viewButton);
         listingContainer.appendChild(container);
-
     });
-}
+
+    initializeModalListeners();
+};
