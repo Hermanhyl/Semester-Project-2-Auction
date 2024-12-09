@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+     initial-scale=1.0">
+     <link rel="icon" href="/fawIcon.png" type="image/png">
+     <script type="module" src="/src/main.js"></script>
+    <title>Edit Profile Page</title>
+</head>
+<body>
+
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <div>
+        <h1>
+            Edit Profile Info
+        </h1>
+    </div>
+
+    <form id="editForm">
+        <div>
+            <label for="bannerImage" >Banner image:</label>
+            <input id="bannerImage" name="bannerImage" type="url" class="border" placeholder="URL goes here">
+        </div>
+        <div>
+            <label for="bannerAlt">Alt text:</label>
+            <input  name="bannerAlt" id="bannerAlt" type="text" class="border" placeholder="Alt text goes here">
+        </div>
+        <div>
+            <label for="avatarImage">Avatar image:</label>
+            <input id="avatarImage" name="avatarImage" type="url" class="border" placeholder="URL goes here">
+        </div>
+        <div>
+            <label for="avatarAlt">Alt text:</label>
+            <input name="avatarAlt" id="avatarAlt" type="text" class="border" placeholder="Alt text goes here">
+        </div>
+        <div>
+            <label for="bio">Bio text:</label>
+            <textarea name="bio" id="bio"  class="border" placeholder="Write your bio here..."></textarea>
+        </div>
+        <div>
+            <button id="updateProfileBtn" class="border">Update Profile</button>
+        </div>
+    </form>
+    
+</body>
+</html>
