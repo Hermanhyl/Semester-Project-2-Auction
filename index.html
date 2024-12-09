@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="/fawIcon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/src/main.js"></script>
     <title>Home page</title>
@@ -13,25 +13,36 @@
     <div id="app"></div>
 
     <header>
-      <nav>
-        <div class="">
-          <a href=""></a>
-        </div>
-
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/auth/login/">Login</a></li>
-          <li><a href="/profile/">Profile</a></li>
-          <li><a href="/post/create/">Create listing</a></li>
-        </ul>
-      </nav>
+      <div id="navbar"></div>
     </header>
-    
-    
-    <div>
-      <h1 class="text-white">Hello world</h1>
-    </div>
+
+      <div class="heroContainer">
+        <div>
+          <img src="/Images/judge-hammer.avif" alt="Hero image of a judge hammer">
+        </div>
+        <div>
+          <h1>Own The Bid!</h1>
+          <p>
+            Welcome to the top Auction platform! Place your bids and win your dreams! 
+          </p>
+        </div>
+      </div>
+
+    <div id="listingContainer"></div>
+
+    <div id="biddersModal" class="modal hidden z-50">
+      <div class="modal-content">
+          <span id="closeModal" class="close-button">&times;</span>
+          <h2>Previous Bidders</h2>
+          <div id="biddersList"></div>
+      </div>
+  </div>
      
+    <div id="paginationControls" class="pagination">
+      <button id="prevPage" disabled>Previous</button>
+      <span id="currentPage">Page 1</span>
+      <button id="nextPage">Next</button>
+    </div>
 
   </body>
 
