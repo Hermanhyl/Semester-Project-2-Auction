@@ -3,9 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/fawIcon.png" type="image/png">
+    <script type="module" src="/src/main.js"></script>
+    <title>Register page</title>
 </head>
-<body>
+<body class="bg-lime-500">
+
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <main>
+
+        <div>
+            <h1 class="">Register</h1>
+        </div>
+
+        <form id="register" action="">
+            <div class="">
+                <label for="name" >Name</label>
+                <input 
+                id="name" 
+                type="text"
+                name="name"
+                required
+                maxlength="20"
+                pattern="^[\w]+$"
+                title="Please enter a username using only letters and numbers"
+                placeholder="Name"
+            />
+            </div>
+            <div>
+                <label for="email" class="text-black">Email</label>
+                <input 
+                id="email" 
+                type="email"
+                name="email"
+                required
+                pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                title="Please enter a valid noroff.no or stud.noroff.no address"
+                placeholder="Email"
+                />
+            </div>
+            <div>
+                <label for="password" class="text-black">Password</label>
+                <input 
+                id="password"
+                type="text"
+                name="password"
+                required
+                minlength="8"
+                title="Minimum length 8 characters"
+                placeholder="Password"
+                />
+            </div>
+            <div>
+                <a href="/auth/login/">Login</a>
+                <button>Register</button>
+            </div>
+        </form>
+
+    </main>
     
 </body>
 </html>
