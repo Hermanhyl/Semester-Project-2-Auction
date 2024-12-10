@@ -1,6 +1,5 @@
 import { createListing } from "../../api/listing/create";
 
-
 export async function onCreateListing(event) {
     event.preventDefault();
 
@@ -35,8 +34,6 @@ export async function onCreateListing(event) {
             createData.tags,
             createData.media
         );
-
-        
 
         if (result) {
             console.log("Listing created successfully:", result);
