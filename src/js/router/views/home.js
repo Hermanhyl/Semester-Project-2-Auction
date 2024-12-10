@@ -1,24 +1,28 @@
 import { displayListings } from "../../api/Listing/displayListings";
 import { readListings } from "../../api/Listing/read";
 import { authGuard } from "../../utilitis/authGuard";
+import { searchHandel } from "../../utilitis/search";
 
+let currentPage = 1;
+const listingsPerPage = 12; 
 
-let currentPage = 1; // Start with page 1
-const listingsPerPage = 12; // Number of listings per page
-
-async function runPage(page = 1) {
+export async function runPage(page = 1, listings = null) {
     try {
-        const listings = await readListings(listingsPerPage, page, "created", "desc");
         const listingContainer = document.getElementById("listingContainer");
-        listingContainer.innerHTML = ""; // Clear the previous listings
-        displayListings(listings, "userName"); // Replace with the actual user name
-        updatePaginationControls(page); 
+        listingContainer.innerHTML = "";
+
+        if (!listings) {
+            listings = await readListings(listingsPerPage, page, "created", "desc");
+        }
+
+        displayListings(listings, "userName"); 
+        updatePaginationControls(page);
     } catch (error) {
         console.error("Error loading page:", error);
     }
 }
 
-runPage()
+runPage();
 
 authGuard()
 
@@ -49,3 +53,9 @@ document.getElementById("nextPage").addEventListener("click", () => {
     currentPage++;
     runPage(currentPage);
 });
+
+async function runSearch() {
+    await searchHandel();
+}
+
+runSearch()
