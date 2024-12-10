@@ -3,7 +3,8 @@ export function generateNavbar() {
         { name: "Home", link: "/" },
         { name: "Profile", link: "/profile/" },
         { name: "Create Listing", link: "/post/create/" },
-        { name: "Login", link: "/auth/login/" }
+        { name: "Login", link: "/auth/login/" },
+        { name: "Logout", id: "logoutBtn" } 
     ];
 
     const navbar = document.getElementById("navbar");
@@ -17,8 +18,15 @@ export function generateNavbar() {
 
     navbarItems.forEach(item => {
         const navLink = document.createElement("a");
-        navLink.href = item.link;
         navLink.textContent = item.name;
+
+        if (item.id) {
+            navLink.id = item.id; 
+            navLink.href = "#"; 
+        } else {
+            navLink.href = item.link; 
+        }
+
         navContainer.appendChild(navLink);
     });
 
