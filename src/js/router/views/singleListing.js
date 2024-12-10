@@ -134,7 +134,7 @@ export const displaySingleListing = (listing) => {
     })
 
     
-    container.append( image, nextButton, prevButton, sellerName, title, description, currentBid, bidForm, viewBiddersButton, editButton);
+    container.append( image, prevButton, nextButton, sellerName, title, description, currentBid, bidForm, viewBiddersButton, editButton);
     singleListingContainer.appendChild(container);
 };
 
