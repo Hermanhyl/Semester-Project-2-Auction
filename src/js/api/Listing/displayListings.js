@@ -30,7 +30,7 @@ export const displayListings = (listings) => {
         return;
     }
 
-    const isLoggedIn = !!localStorage.getItem("userToken"); 
+    const isLoggedIn = !!localStorage.getItem("token"); 
 
     listings.forEach(listing => {
         const container = document.createElement("div");
