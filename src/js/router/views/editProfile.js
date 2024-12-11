@@ -1,4 +1,4 @@
-import { readProfile } from "../../api/profile/reade";
+import { readProfile } from "../../api/profile/read";
 import { updateProfile } from "../../api/profile/update";
 
 
@@ -64,6 +64,7 @@ async function onUpdateProfile(event) {
     try {
         const updatedProfile = await updateProfile(name, editInfo);
         console.log("Profile successfully updated:", updatedProfile);
+        window.location.href = "/profile/";
     } catch (error) {
         console.error("Error during profile update:", error);
     }
