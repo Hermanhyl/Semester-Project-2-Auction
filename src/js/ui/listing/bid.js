@@ -12,7 +12,7 @@ export const onBid = async (event, id) => {
         return; 
     }
 
-    const bidResponse = await fetchBid(amount, id); 
+    await fetchBid(amount, id); 
         
 };
 
