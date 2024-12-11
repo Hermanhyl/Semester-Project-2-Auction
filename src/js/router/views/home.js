@@ -1,7 +1,7 @@
 import { displayListings } from "../../api/Listing/displayListings";
 import { readListings } from "../../api/Listing/read";
-import { authGuard } from "../../utilitis/authGuard";
 import { searchHandel } from "../../utilitis/search";
+
 
 let currentPage = 1;
 const listingsPerPage = 12; 
@@ -24,10 +24,8 @@ export async function runPage(page = 1, listings = null) {
 
 runPage();
 
-authGuard()
-
 function updatePaginationControls(page) {
-    const totalListings = 100; // Replace this with the total count from the API if available
+    const totalListings = 100; 
     const totalPages = Math.ceil(totalListings / listingsPerPage);
 
     const prevButton = document.getElementById("prevPage");
