@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/fawIcon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/fawIcon.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
     <script type="module" src="/src/main.js"></script>
     <title>Home page</title>
   </head>
 
-  <body class="bg-slate-700">
+  <body class="">
 
     <div id="app"></div>
 
@@ -16,35 +17,51 @@
       <div id="navbar"></div>
     </header>
 
-      <div class="heroContainer">
-        <div>
-          <img src="/Images/judge-hammer.avif" alt="Hero image of a judge hammer">
-        </div>
-        <div>
-          <h1>Own The Bid!</h1>
-          <p>
-            Welcome to the top Auction platform! Place your bids and win your dreams! 
-          </p>
-        </div>
+    <div class="heroContainer flex flex-col items-center pt-10 justify-center bg-lightGrey px-4">
+      <!-- Image Container -->
+      <div class="flex justify-center">
+        <img src="/image/judge-hammer.avif" alt="Hero image of a judge hammer" class="rounded-lg border-4 border-black shadow-lg max-h-80">
       </div>
+      
+      <!-- Text Content -->
+      <div class="text-center max-w-3xl px-4">
+        <h1 class="text-darkSlate text-black font-bold text-[40px] pt-5 ">Own The Bid!</h1>
+        <p class="text-darkSlate text-body text-black leading-body">
+          Welcome to the top Auction platform! Place your bids and win your dreams! 
+        </p>
+      </div>
+    </div>
 
-      <form id="searchform">
-        <div>
-            <input
-                type="text"
-                id="search-bar"
-                placeholder="Search listings..."
-                aria-label="Search"
-            />
-            <button type="button" id="search-button">Search</button>
-        </div>
+    <form id="searchform" class="flex flex-col items-center space-y-4 py-8">
+      <!-- Search input and button container -->
+      <div class="flex sm:flex-row items-center  sm:space-y-0 sm:space-x-4 gap-5">
+        <!-- Search input -->
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Search listings..."
+          aria-label="Search"
+          class="border-2 border-black rounded-[20px] px-4 py-2  w-full sm:w-64 text-darkSlate text-body  h-12 focus:outline-none focus:ring-2 focus:ring-accentRed"
+        />
+        
+        <!-- Search button -->
+        <button
+          type="button"
+          id="search-button"
+          class="bg-[#EF233C] text-white items-center px-4 rounded-[20px] h-12 flex items-centerd hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed">
+          Search
+        </button>
+      </div>
     </form>
-    <p id="search-result-message" class="hidden">Results will be displayed here.</p>
-    <div id="listingContainer"></div>
+      <!-- Search result message -->
+      <p id="search-result-message" class="hidden text-darkSlate text-body">
+        Results will be displayed here.
+      </p>
+    </form>
+    
+    <div id="listingContainer" class=" grid grid-cols-1 sm:grid-cols-2 gap-6 p-5 max-w-screen-lg mx-auto my-0 min-h-screen "></div>
 
-    <div id="listingContainer"></div>
-
-    <div id="biddersModal" class="modal hidden z-50">
+    <div id="biddersModal" class="modal hidden z-50 text-black">
       <div class="modal-content">
           <span id="closeModal" class="close-button">&times;</span>
           <h2>Previous Bidders</h2>
@@ -52,11 +69,22 @@
       </div>
   </div>
      
-    <div id="paginationControls" class="pagination">
-      <button id="prevPage" disabled>Previous</button>
-      <span id="currentPage">Page 1</span>
-      <button id="nextPage">Next</button>
-    </div>
+  <div id="paginationControls" class="pagination flex items-center justify-center space-x-4 py-4">
+    <button 
+      id="prevPage" 
+      class="bg-[#EF233C] text-white py-2 px-4 rounded-md disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-accentRed/90 focus:outline-none focus:ring-2 focus:ring-accentRed"
+      disabled
+    >
+      Previous
+    </button>
+    <span id="currentPage" class="text-lg font-medium text-darkSlate text-black">Page 1</span>
+    <button 
+      id="nextPage" 
+      class="bg-[#EF233C] text-white py-2 px-4 rounded-md hover:bg-accentRed/90 focus:outline-none focus:ring-2 focus:ring-accentRed"
+    >
+      Next
+    </button>
+  </div>
 
   </body>
 
