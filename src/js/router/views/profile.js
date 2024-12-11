@@ -1,6 +1,8 @@
 import { displayWins } from "../../api/profile/displayWins";
 import { displayListings } from "../../api/profile/myListingDisplay";
-import { readProfile, } from "../../api/profile/reade";
+import { readProfile } from "../../api/profile/read";
+import { authGuard } from "../../utilitis/authGuard.js";
+
 
 export const displayProfile = async () => {
     const profileContainer = document.getElementById("profileContainer");
@@ -97,3 +99,5 @@ async function runListings() {
 }
 
 runListings();
+
+authGuard()
