@@ -7,14 +7,12 @@ export const fetchBid = async (amount, id) => {
         throw new Error("Listing ID is required to fetch bid details.");
     }
 
-    // Prepare the request body
     const body = {
         amount: amount,
     };
-    console.log(body);
+    
     
     try {
-        // Make the POST request to the API
         const response = await fetch(`${API_AUCTION_LISTINGS}/${id}/bids`, {
             method: "POST",
             headers: headers(),
@@ -23,7 +21,6 @@ export const fetchBid = async (amount, id) => {
 
         console.log('response', response);
         
-        // Check if the response is successful
         if (!response.ok) {
             throw new Error(`Failed to place bid. Status: ${response.status}`);
         }
