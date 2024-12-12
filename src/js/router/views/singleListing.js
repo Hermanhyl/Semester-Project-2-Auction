@@ -65,9 +65,8 @@ export const displaySingleListing = (listing) => {
         updateImage();
     });
 
-    // Create a flex container for the buttons, placed below the image
     const buttonContainer = document.createElement("div");
-    buttonContainer.className = "flex justify-between items-center w-full mt-4"; // Margin-top to space from image
+    buttonContainer.className = "flex justify-between items-center w-full mt-4"; 
 
     buttonContainer.appendChild(prevButton);
     buttonContainer.appendChild(nextButton);
