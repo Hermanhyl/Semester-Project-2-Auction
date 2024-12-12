@@ -29,16 +29,12 @@ export async function login({email, password}) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log("blobbbb", data);
             
             localStorage.setItem('userInfo', JSON.stringify(data.data));
             localStorage.setItem('token', JSON.stringify(data.data.accessToken));
             window.location.href = "/"
             alert("Successfully logged in");
-        } else {
-            console.log("tompe lumpe");
-            
-        }
+        } 
     } catch (error) {
         console.error("Error during login")
         alert("An error has occured")
