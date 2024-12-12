@@ -60,7 +60,11 @@ export const displayListings = (listings) => {
 
         const description = document.createElement("p");
         description.innerText = listing.description;
-        description.className = "listingDescription text-sm text-gray-200 mb-auto line-clamp-2 break-all";
+        description.className = "listingDescription text-sm text-gray-200  line-clamp-2 break-all";
+
+        const endsAt = document.createElement("h4")
+        endsAt.innerText = listing.endsAt
+        endsAt.className = "endsAt mt-2"
 
         const currentBid = document.createElement("p");
         currentBid.className = "currentBid text-lg font-semibold mt-2";
@@ -87,12 +91,24 @@ export const displayListings = (listings) => {
         const bidButton = document.createElement("button");
         bidButton.type = "submit";
         bidButton.innerText = "Place Bid";
-        bidButton.className = "bidButton bg-[#EF233C] text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed";
+        bidButton.className = "bidButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed";
 
         bidForm.appendChild(bidInput);
         bidForm.appendChild(bidButton);
 
-        bidForm.addEventListener("submit", (event) => onBid(event, listing.id));
+        bidForm.addEventListener("submit", async (event) => {
+            event.preventDefault(); 
+
+            try {
+                onBid(event, listing.id);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            } catch (error) {
+                console.error("Failed to place bid:", error);
+                alert("There was an issue placing your bid. Please try again.");
+            }
+        });
 
         const openModal = document.getElementById("biddersModal");
 
@@ -122,7 +138,7 @@ export const displayListings = (listings) => {
             localStorage.setItem("listingId", JSON.stringify(listing.id));
         });
 
-        container.append(image, sellerName, title, description, currentBid, separator, bidForm, viewBiddersButton, viewButton);
+        container.append(image, sellerName, title, description, endsAt, currentBid, separator, bidForm, viewBiddersButton, viewButton);
         listingContainer.appendChild(container);
     });
 
