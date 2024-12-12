@@ -13,7 +13,7 @@ export async function searchHandel() {
 
         if (!searchInput) {
             displaySearchWord.textContent = "Please enter a search term.";
-            displaySearchWord.classList.replace("hidden", "flex");
+            displaySearchWord.innerText = "hidden flex"
             return;
         }
 
