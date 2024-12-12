@@ -15,13 +15,13 @@ export function generateNavbar() {
     navContainer.className = "navContainer p-4 shadow-lg text-black flex justify-between items-center max-w-screen-lg mx-auto";
 
     const logo = document.createElement("img");
-    logo.src = "/image/logo.png";
+    logo.src = "/image/logo-big.png";
     logo.alt = "Logo";
     logo.className = "logo w-20 h-auto";
     navContainer.appendChild(logo);
 
     const navItemsContainer = document.createElement("div");
-    navItemsContainer.className = "flex gap-6 items-center"; 
+    navItemsContainer.className = "flex gap-8 items-center"; 
 
     navbarItems.forEach(item => {
         const navLink = document.createElement("a");
@@ -35,17 +35,17 @@ export function generateNavbar() {
 
         const icon = document.createElement("i");
         icon.className = item.iconSolid;
-        icon.style.color = isActive ? "#EF233C" : "#8D99AE"; 
+        icon.style.color = isActive ? "#B11125" : "#8D99AE"; 
         icon.classList.add("text-2xl", "transition-colors", "duration-300", "md:hidden");
 
         const text = document.createElement("span");
         text.textContent = item.name;
         text.className = "hidden md:inline-block text-lg font-medium transition-colors duration-300";
-        text.style.color = isActive ? "#EF233C" : "#8D99AE";
+        text.style.color = isActive ? "#B11125" : "#8D99AE";
 
         navLink.addEventListener("mouseenter", () => {
-            icon.style.color = "#EF233C";
-            text.style.color = "#EF233C";
+            icon.style.color = "#B11125";
+            text.style.color = "#B11125";
         });
         navLink.addEventListener("mouseleave", () => {
             if (!isActive) {
@@ -65,7 +65,7 @@ export function generateNavbar() {
     authContainer.className = "authContainer";
 
     const authButton = document.createElement("button");
-    authButton.className = "authButton bg-[#EF233C] text-white py-2 px-4 rounded-md hover:bg-accentRed/90 focus:outline-none focus:ring-2 focus:ring-accentRed";
+    authButton.className = "authButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-accentRed/90 focus:outline-none focus:ring-2 focus:ring-accentRed";
 
     const isLoggedIn = Boolean(localStorage.getItem("token"));
     authButton.textContent = isLoggedIn ? "Logout" : "Login";
