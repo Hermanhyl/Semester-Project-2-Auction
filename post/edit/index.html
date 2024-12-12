@@ -14,49 +14,132 @@
         <div id="navbar"></div>
     </header>
 
-    <form id="updateListing">
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" required class="border" />
+    <div class="flex items-center justify-center min-h-screen ">
+        <div class="max-w-lg w-full p-6 rounded-lg bg-[#2B2D42] my-20">
+            <div class="flex justify-center mb-6">
+                <h1 class="text-white font-bold text-3xl">Update Listing</h1>
+            </div>
+        
+            <form id="updateListing" action="">
+                <div class="mb-4">
+                    <label for="title" class="text-white font-semibold">Title</label>
+                    <input 
+                        id="title" 
+                        type="text"
+                        name="title"
+                        required
+                        placeholder="Title"
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-4">
+                    <label for="body" class="text-white font-semibold">Description</label>
+                    <textarea 
+                        id="body"
+                        name="body"
+                        required
+                        placeholder="Description"
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    ></textarea>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="endsAt" class="text-white font-semibold">Ends At</label>
+                    <input 
+                        id="endsAt" 
+                        type="datetime-local"
+                        name="endsAt"
+                        required
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-4">
+                    <label for="tags" class="text-white font-semibold">Tags</label>
+                    <input 
+                        id="tags" 
+                        type="text"
+                        name="tags"
+                        placeholder="Comma-separated tags"
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-4">
+                    <label for="image1" class="text-white font-semibold">Image 1 URL</label>
+                    <input 
+                        id="image1"
+                        type="url"
+                        name="image1"
+                        required
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-4">
+                    <label for="alt1" class="text-white font-semibold">Alt Text 1</label>
+                    <input 
+                        id="alt1"
+                        type="text"
+                        name="alt1"
+                        required
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-4">
+                    <label for="image2" class="text-white font-semibold">Image 2 URL</label>
+                    <input 
+                        id="image2"
+                        type="url"
+                        name="image2"
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-4">
+                    <label for="alt2" class="text-white font-semibold">Alt Text 2</label>
+                    <input 
+                        id="alt2"
+                        type="text"
+                        name="alt2"
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-4">
+                    <label for="image3" class="text-white font-semibold">Image 3 URL</label>
+                    <input 
+                        id="image3"
+                        type="url"
+                        name="image3"
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="mb-6">
+                    <label for="alt3" class="text-white font-semibold">Alt Text 3</label>
+                    <input 
+                        id="alt3"
+                        type="text"
+                        name="alt3"
+                        class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                    />
+                </div>
+        
+                <div class="flex justify-center">
+                    <button 
+                        type="submit" 
+                        class="px-6 py-3 bg-[#B11125] text-white font-bold rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed"
+                    >
+                        Update
+                    </button>
+                </div>
+            </form>
         </div>
-        <div>
-            <label for="body">Description</label>
-            <textarea id="body" name="body" required class="border"></textarea>
-        </div>
-        <div>
-            <label for="endsAt">Ends At</label>
-            <input type="datetime-local" id="endsAt" name="endsAt" required class="border" />
-        </div>
-        <div>
-            <label for="tags">Tags</label>
-            <input type="text" id="tags" name="tags" placeholder="Comma-separated tags" class="border" />
-        </div>
-        <div>
-            <label for="image1">Image 1 URL</label>
-            <input type="url" id="image1" name="image1" required class="border" />
-        </div>
-        <div>
-            <label for="alt1">Alt Text 1</label>
-            <input type="text" id="alt1" name="alt1" required class="border" />
-        </div>
-        <div>
-            <label for="image2">Image 2 URL</label>
-            <input type="url" id="image2" name="image2" class="border" />
-        </div>
-        <div>
-            <label for="alt2">Alt Text 2</label>
-            <input type="text" id="alt2" name="alt2" class="border" />
-        </div>
-        <div>
-            <label for="image3">Image 3 URL</label>
-            <input type="url" id="image3" name="image3" class="border" />
-        </div>
-        <div>
-            <label for="alt3">Alt Text 3</label>
-            <input type="text" id="alt3" name="alt3" class="border" />
-        </div>
-        <button type="submit">Update</button>
-    </form>
+    </div>
+    
     
 </body>
 </html>
