@@ -1,4 +1,4 @@
-export const displayListings = (profileData) => {
+export const displayMyListings = (profileData) => {
     const listingsContainer = document.getElementById("listingsContainer");
 
     if (!profileData || !profileData.listings || profileData.listings.length === 0) {

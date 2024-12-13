@@ -1,5 +1,5 @@
 import { displayWins } from "../../api/profile/displayWins";
-import { displayListings } from "../../api/profile/myListingDisplay";
+import { displayMyListings } from "../../api/profile/myListingDisplay";
 import { readProfile, readProfileWins } from "../../api/profile/read";
 import { authGuard } from "../../utilitis/authGuard.js";
 
@@ -121,7 +121,7 @@ async function runListings() {
 
         const profileData = await readProfile(userInfo.name);
 
-        displayListings(profileData);
+        displayMyListings(profileData);
     } catch (error) {
         console.error("Error in runListings:", error);
 
