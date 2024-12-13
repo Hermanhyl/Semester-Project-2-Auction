@@ -14,4 +14,3 @@ export function createFooter() {
     document.body.appendChild(footer);
 }
 
-createFooter() 
