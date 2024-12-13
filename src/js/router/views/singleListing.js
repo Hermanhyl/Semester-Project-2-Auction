@@ -123,6 +123,11 @@ export const displaySingleListing = (listing) => {
     bidForm.addEventListener("submit", async (event) => {
         event.preventDefault(); 
 
+        if (!bidInput.value || bidInput.value <= 0) {
+            alert("Please enter a valid bid amount before placing your bid.");
+            return;  
+        }
+
         try {
             await onBid(event, listing.id);
             setTimeout(() => {
@@ -159,7 +164,6 @@ export const displaySingleListing = (listing) => {
     editButton.className = "edit-button text-sm font-bold text-white bg-accent-red px-4 py-2 rounded hover:brightness-110";
     editButton.addEventListener("click", () => {
         window.location.href = `../post/edit/?id=${listing.id}`;
-        localStorage.setItem("listingId", JSON.stringify(listing.id));
     });
 
     container.append(
