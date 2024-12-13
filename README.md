@@ -5,11 +5,10 @@
 - [Description](#description)
 - [User Stories](#user-stories)
 - [Technologies](#technologies)
-- [Getting Started](#getting-started)
+- [Planing Resources](#planing-resources)
   - [Prerequisites](#prerequisites)
   - [Steps To Run Locally](#steps-to-run-locally)
 - [API](#api)
-- [Planing Resources](#planing-resources)
 - [Acknowledgement](#acknowledgement)
 - [Authors](#authors)
   
@@ -52,7 +51,11 @@ The project is built using:
 
 The backend API is provided by Noroff and documented [here](https://docs.noroff.dev/docs/v2/auction-house/listings).
 
-## Getting Started
+## Planing Resources
+
+- Gantt Chart: https://github.com/users/Hermanhyl/projects/2/views/4
+- Figma Design: https://www.figma.com/design/8AhvLrYMu6VoQhHefNQpUz/Semester-Project-2-auction?m=auto&t=dcu6AGc0uhWWBqzU-1
+- Kanban Board: https://github.com/users/Hermanhyl/projects/2/views/3
 
 ### Prerequisites
 
@@ -88,16 +91,10 @@ Here is the link for the API used for this project: https://v2.api.noroff.dev/do
 
 You will find the fetch calls used under auction-profiles and auction-listings.
 
-##Planing Resources
-
-- Gantt Chart: https://github.com/users/Hermanhyl/projects/2/views/4
-- Figma Design: https://www.figma.com/design/8AhvLrYMu6VoQhHefNQpUz/Semester-Project-2-auction?m=auto&t=dcu6AGc0uhWWBqzU-1
-- Kanban Board: https://github.com/users/Hermanhyl/projects/2/views/3
-
 ## Acknowledgement
 
 - Images used are taken from Unsplash (free)
 - Icons used are taken from Font Awsome (free)
 
-Author
+## Authors
  - Hermanhyl
