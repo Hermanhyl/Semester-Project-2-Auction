@@ -78,6 +78,13 @@ export function generateNavbar() {
         }
     });
 
+    document.addEventListener("click", (event) => {
+        const logoutButton = event.target.closest("#logoutBtn");
+        if (logoutButton) {
+            onLogout();
+        }
+    });
+
     authContainer.appendChild(authButton);
     navContainer.appendChild(authContainer);
 
