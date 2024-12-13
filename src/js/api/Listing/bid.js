@@ -18,16 +18,14 @@ export const fetchBid = async (amount, id) => {
             headers: headers(),
             body: JSON.stringify(body)
         });
-
-        console.log('response', response);
         
         if (!response.ok) {
             throw new Error(`Failed to place bid. Status: ${response.status}`);
         }
 
-        // Parse and return the response data
+        
         const data = await response.json();
-        return data; // Return the response data
+        return data; 
 
     } catch (error) {
         console.error("Error making API call:", error);
@@ -48,7 +46,7 @@ export const fetchBidders = async (name) => {
 
         const data = await response.json();
         console.log("data", data);
-        return data.data.bids || []; // Return bids array
+        return data.data.bids || []; 
 
     } catch (error) {
         console.error("Error fetching bidders:", error);
