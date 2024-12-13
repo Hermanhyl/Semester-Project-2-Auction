@@ -1,6 +1,6 @@
 import { displayWins } from "../../api/profile/displayWins";
 import { displayListings } from "../../api/profile/myListingDisplay";
-import { readProfile } from "../../api/profile/read";
+import { readProfile, readProfileWins } from "../../api/profile/read";
 import { authGuard } from "../../utilitis/authGuard.js";
 
 
@@ -97,17 +97,24 @@ async function runWins() {
             throw new Error("User information is not available in localStorage.");
         }
 
-        const profileData = await readProfile(userInfo.name);
-        displayWins(profileData);
+        console.log("User Info:", userInfo);
+
+        const profileData = await readProfileWins(userInfo.name);
+
+        console.log("Profile Data from API:", profileData);
+        
+        displayWins({ wins: profileData });
     } catch (error) {
         console.error("Error in runWins:", error);
+
         const winsContainer = document.getElementById("winsContainer"); 
+        winsContainer.innerHTML = ""; 
         const errorMessage = document.createElement("p");
         errorMessage.innerText = "An error occurred while loading wins.";
+        errorMessage.className = "text-red-500 text-center";
         winsContainer.appendChild(errorMessage);
     }
 }
-
 runWins();
 
 
