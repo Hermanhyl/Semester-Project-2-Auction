@@ -1,4 +1,4 @@
-import { readSingleListing } from "../../api/Listing/read";
+import { readSingleListing } from "../../api/listing/read";
 import { onBid, showBidders } from "../../ui/listing/bid";
 
 const initializeModalListeners = () => {
