@@ -1,3 +1,5 @@
+import { createListing } from "../../api/listing/create";
+
 export async function onCreateListing(event) {
     event.preventDefault();
 
@@ -25,7 +27,7 @@ export async function onCreateListing(event) {
     console.log("Payload being sent:", createData);
 
     try {
-        const result = await onCreateListing(
+        const result = await createListing(
             createData.title,
             createData.description,
             createData.endsAt,
