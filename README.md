@@ -10,7 +10,7 @@
 - [Steps To Run Locally](#steps-to-run-locally)
 - [API](#api)
 - [Acknowledgement](#acknowledgement)
-- [Authors](#authors)
+- [Author](#authors)
   
 ---
 
@@ -96,5 +96,5 @@ You will find the fetch calls used under auction-profiles and auction-listings.
 - Images used are taken from Unsplash (free)
 - Icons used are taken from Font Awsome (free)
 
-## Authors
+## Author
  - Hermanhyl
