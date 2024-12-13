@@ -4,11 +4,16 @@ import { setLogoutListener } from "./js/ui/auth/logout";
 import { createFooter } from "./js/utilitis/footer";
 import { generateNavbar } from "./js/utilitis/navBar";
 
-await router(window.location.pathname);
 
-generateNavbar()
+async function loadMain() {
 
-setLogoutListener(); 
+    await router(window.location.pathname);
 
-createFooter()
+    generateNavbar()
 
+    setLogoutListener(); 
+
+    createFooter()
+}
+
+loadMain()
