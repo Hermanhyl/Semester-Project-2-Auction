@@ -1,7 +1,8 @@
 export const displayWins = (profileData) => {
     const winsContainer = document.getElementById("winsContainer");
+    winsContainer.innerHTML = ""; // Clear previous content
 
-    if (!profileData || !profileData.wins || profileData.wins.length === 0) {
+    if (!profileData?.wins || profileData.wins.length === 0) {
         const noWinsMessage = document.createElement("p");
         noWinsMessage.innerText = "No wins to display...";
         noWinsMessage.className = "text-gray-500 text-center mt-4";
@@ -34,8 +35,8 @@ export const displayWins = (profileData) => {
         description.innerText = win.description || "No Description";
         description.className = "winDescription text-gray-600 text-sm";
 
-        const sellerName = document.createElement("p");
-        sellerName.innerText = win.seller?.name;
+        const sellerName = document.createElement("h2");
+        sellerName.innerText = win.seller?.name || "Unknown Seller";
         sellerName.className = "sellerName text-black font-bold mb-2 mt-2";
 
         const viewButton = document.createElement("button");
@@ -44,7 +45,6 @@ export const displayWins = (profileData) => {
 
         viewButton.addEventListener("click", () => {
             window.location.href = `/post/?id=${win.id}`;
-            localStorage.setItem("listingId", JSON.stringify(win.id));
         });
 
         winContainer.append(image, sellerName, title, description, viewButton);
