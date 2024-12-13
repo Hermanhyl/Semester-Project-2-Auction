@@ -5,7 +5,7 @@ import { authGuard } from "../../utilitis/authGuard";
 
 const form = document.forms.createListing;
 
-form.addEventListener("submit", onCreateListing())
+form.addEventListener("submit", onCreateListing)
 
 
 
