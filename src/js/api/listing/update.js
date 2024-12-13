@@ -13,7 +13,7 @@ export async function updateListing(id, {title, description, endsAt, tags, media
         });
 
         if (!response.ok) {
-            alert("Failed to update listing")
+            alert("Failed to update listing, sure this is your listing?")
         } else {
             alert("Post successfully updatet")
             const data = await response.json();
