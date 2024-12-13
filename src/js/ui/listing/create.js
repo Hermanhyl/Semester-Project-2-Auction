@@ -17,9 +17,9 @@ export async function onCreateListing(event) {
     const createData = {
         title: formData.get("title"),
         description: formData.get("body"),
-        endsAt: new Date(formData.get("endsAt")).toISOString(), 
-        tags: formData.get("tags") 
-            ? formData.get("tags").split(',').map(tag => tag.trim()) 
+        endsAt: new Date(formData.get("endsAt")).toISOString(),
+        tags: formData.get("tags")
+            ? formData.get("tags").split(',').map(tag => tag.trim())
             : [],
         media
     };
