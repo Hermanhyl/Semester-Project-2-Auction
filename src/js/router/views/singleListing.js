@@ -149,7 +149,6 @@ export const displaySingleListing = (listing) => {
         viewBiddersButton.classList.add("cursor-not-allowed", "opacity-50");
     } else {
         viewBiddersButton.addEventListener("click", () => {
-            console.log("View Bidders button clicked for listing ID:", listing.id);
             openModal.classList.add("flex");
             showBidders(listing.id);
         });
@@ -165,7 +164,7 @@ export const displaySingleListing = (listing) => {
 
     container.append(
         image,
-        buttonContainer,  // Button container placed below the image
+        buttonContainer, 
         sellerName,
         title,
         description,
