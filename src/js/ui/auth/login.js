@@ -10,5 +10,5 @@ export async function onlogin(event) {
         password: formData.get("password"),
     }
     
-    login(loginData);
+    await login(loginData);
 }

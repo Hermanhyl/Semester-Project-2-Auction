@@ -124,7 +124,7 @@ export const displaySingleListing = (listing) => {
         event.preventDefault(); 
 
         try {
-            onBid(event, listing.id);
+            await onBid(event, listing.id);
             setTimeout(() => {
                 window.location.reload();
             }, 500);

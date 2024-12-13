@@ -10,5 +10,5 @@ export async function onRegister(event) {
         password: formData.get("password")
     };
 
-    register(registerData)
+    await register(registerData)
 }
