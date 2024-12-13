@@ -15,7 +15,7 @@ export const displayProfile = async () => {
     const container = document.createElement("div");
     container.className = "p-6 space-y-6";
 
-    // Banner Section
+    
     const bannerContainer = document.createElement("div");
     bannerContainer.className = "relative";
 
@@ -35,11 +35,11 @@ export const displayProfile = async () => {
     avatarContainer.appendChild(avatar);
     bannerContainer.append(banner, avatarContainer);
 
-    // Info Section
+    
     const infoContainer = document.createElement("div");
     infoContainer.className = "space-y-4 mt-6 shadow-md p-2 pb-5 rounded-lg" ;
 
-    // Edit Button
+    
     const editButtonContainer = document.createElement("div");
     editButtonContainer.className = "flex justify-end";
 
@@ -52,7 +52,7 @@ export const displayProfile = async () => {
 
     editButtonContainer.appendChild(editButton);
 
-    // Name, Bio, and Credits
+    
     const nameAndBioContainer = document.createElement("div");
     nameAndBioContainer.className = "text-center space-y-2";
 
@@ -70,13 +70,10 @@ export const displayProfile = async () => {
 
     nameAndBioContainer.append(name, credits, bio);
 
-    // Combine all elements into the info container
     infoContainer.append(editButtonContainer, nameAndBioContainer);
 
-    // Combine all sections
     container.append(bannerContainer, infoContainer);
 
-    // Append the container to the profile container
     profileContainer.appendChild(container);
 };
 
@@ -97,11 +94,7 @@ async function runWins() {
             throw new Error("User information is not available in localStorage.");
         }
 
-        console.log("User Info:", userInfo);
-
         const profileData = await readProfileWins(userInfo.name);
-
-        console.log("Profile Data from API:", profileData);
         
         displayWins({ wins: profileData });
     } catch (error) {
