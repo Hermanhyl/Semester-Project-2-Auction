@@ -86,29 +86,34 @@ export const displayListings = (listings) => {
         bidInput.type = "number";
         bidInput.placeholder = "Enter your bid";
         bidInput.min = "0";
-        bidInput.className = "bidInput text-black p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed";
+        bidInput.className = "bidInput text-black p-2 border border-gray-300       rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed";
 
         const bidButton = document.createElement("button");
         bidButton.type = "submit";
         bidButton.innerText = "Place Bid";
-        bidButton.className = "bidButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed";
+        bidButton.className = "bidButton bg-[#B11125] text-white py-2 px-4     rounded-md hover:bg-red-400 focus:outline-none focus:ring-2    focus:ring-accentRed";
 
         bidForm.appendChild(bidInput);
         bidForm.appendChild(bidButton);
 
         bidForm.addEventListener("submit", async (event) => {
-            event.preventDefault(); 
+        event.preventDefault(); 
 
-            try {
-                onBid(event, listing.id);
-                setTimeout(() => {
-                    window.location.reload();
-                }, 500);
-            } catch (error) {
-                console.error("Failed to place bid:", error);
-                alert("There was an issue placing your bid. Please try again.");
-            }
-        });
+        if (!bidInput.value || bidInput.value <= 0) {
+            alert("Please enter a valid bid amount before placing your bid.");
+            return;  
+        }
+
+        try {
+            await onBid(event, listing.id);
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+        } catch (error) {
+            console.error("Failed to place bid:", error);
+            alert("There was an issue placing your bid. Please try again.");
+        }
+    });
 
         const openModal = document.getElementById("biddersModal");
 
