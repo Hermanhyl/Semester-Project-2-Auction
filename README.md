@@ -86,7 +86,7 @@ The live version of the project will be available soon once deployed.
 
 Here is the link for the API used for this project: https://v2.api.noroff.dev/docs/static/index.html#/
 
-You will find the fetch calls used under auction-profiles and auction-listings
+You will find the fetch calls used under auction-profiles and auction-listings.
 
 ##Planing Resources
 
