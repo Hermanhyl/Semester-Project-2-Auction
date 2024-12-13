@@ -11,7 +11,7 @@ async function loadingProfile() {
             throw new Error("Username is not available");
         }
 
-        const profile = await readProfile(username); // Fetch profile data
+        const profile = await readProfile(username); 
 
         if (profile) {
             const formUpdateProfile = document.forms["editForm"];
@@ -21,7 +21,6 @@ async function loadingProfile() {
                 formUpdateProfile.avatarImage.value = profile.avatar?.url || "";
                 formUpdateProfile.avatarAlt.value = profile.avatar?.alt || "";
                 formUpdateProfile.bio.value = profile.bio || "";
-                console.log("Form fields updated with profile data");
             } else {
                 console.error("Form 'editForm' not found in the DOM");
             }
@@ -36,9 +35,8 @@ async function loadingProfile() {
 }
 }
 
-// Function to handle profile update submission
 async function onUpdateProfile(event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
 
     const formData = new FormData(event.target);
 
@@ -70,7 +68,7 @@ async function onUpdateProfile(event) {
     }
 }
 
-// Attach event listener to the form
+
 const formUpdateListing = document.forms["editForm"];
 if (formUpdateListing) {
     formUpdateListing.addEventListener("submit", onUpdateProfile);
@@ -78,5 +76,5 @@ if (formUpdateListing) {
     console.error("Form 'editForm' not found in the DOM");
 }
 
-// Call the loadingProfile function to initialize the form
+
 loadingProfile();
