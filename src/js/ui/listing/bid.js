@@ -1,4 +1,4 @@
-import { fetchBid, fetchBidders } from "../../api/listing/bid";
+import { fetchBid, fetchBidders } from "../../api/listings/bid";
 
 
 export const onBid = async (event, id) => {
