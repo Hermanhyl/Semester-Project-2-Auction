@@ -1,4 +1,5 @@
-import { updateListing } from "/api/listing/update";
+import { updateListing } from "../../api/listing/update";
+
 
 export async function onUpdateListing(event, postId) {
     event.preventDefault();
