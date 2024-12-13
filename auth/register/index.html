@@ -3,9 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/fawIcon.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+    <script type="module" src="/src/main.js"></script>
+    <title>Register page</title>
 </head>
-<body>
+<body >
+
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <main>
+
+        <div class="flex items-center justify-center min-h-screen ">
+            <div class="max-w-sm w-full p-6 rounded-lg  ">
+                <div class="flex justify-center mb-6">
+                    <h1 class="text-black font-bold text-3xl">Register</h1>
+                </div>
+            
+                <form id="register" class="">
+                    <div class="mb-4">
+                        <label for="name" class="text-black font-semibold">Name</label>
+                        <input 
+                            id="name" 
+                            type="text"
+                            name="name"
+                            required
+                            maxlength="20"
+                            pattern="^[\w]+$"
+                            title="Please enter a username using only letters and numbers"
+                            placeholder="Name"
+                            class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                        />
+                    </div>
+            
+                    <div class="mb-4">
+                        <label for="email" class="text-black font-semibold">Email</label>
+                        <input 
+                            id="email" 
+                            type="email"
+                            name="email"
+                            required
+                            pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                            title="Please enter a valid noroff.no or stud.noroff.no address"
+                            placeholder="Email"
+                            class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                        />
+                    </div>
+            
+                    <div class="mb-4">
+                        <label for="password" class="text-black font-semibold">Password</label>
+                        <input 
+                            id="password"
+                            type="password"
+                            name="password"
+                            required
+                            minlength="8"
+                            title="Minimum length 8 characters"
+                            placeholder="Password"
+                            class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accentRed text-gray-800"
+                        />
+                    </div>
+            
+                    <div class="flex justify-between items-center mb-6">
+                        <a href="/auth/login/" class="text-black hover:text-[#B11125]">Login</a>
+                        <button 
+                            type="submit" 
+                            class="px-6 py-3 bg-[#B11125] text-white font-bold rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed"
+                        >
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
     
 </body>
 </html>
