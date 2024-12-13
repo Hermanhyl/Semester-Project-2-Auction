@@ -1,5 +1,5 @@
-import { displayListings } from "../../api/listings/displayListings";
-import { readListings } from "../../api/listings/read";
+import { displayListings } from "../../api/listing/displayListings";
+import { readListings } from "../../api/listing/read";
 import { searchHandel } from "../../utilitis/search";
 
 

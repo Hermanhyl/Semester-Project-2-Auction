@@ -1,4 +1,4 @@
-import { readSingleListing } from "../../api/listings/read";
+import { readSingleListing } from "../../api/listing/read";
 import { onUpdateListing } from "../../ui/listing/update";
 import { authGuard } from "../../utilitis/authGuard";
 
