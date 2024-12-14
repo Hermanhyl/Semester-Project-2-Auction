@@ -51,7 +51,7 @@ const displaySingleListing = (listing) => {
 
     const nextButton = document.createElement("button");
     nextButton.innerText = "Next";
-    nextButton.className = "next-button text-sm font-bold text-white bg-[#B11125] px-4 py-2 rounded hover:bg-red-400 hover:text-black";
+    nextButton.className = "next-button text-sm font-bold text-white bg-[#EF233C] px-4 py-2 rounded hover:brightness-110";
     nextButton.addEventListener("click", () => {
         currentImage = (currentImage + 1) % listing.media.length;
         updateImage();
@@ -59,7 +59,7 @@ const displaySingleListing = (listing) => {
 
     const prevButton = document.createElement("button");
     prevButton.innerText = "Prev";
-    prevButton.className = "prev-button text-sm font-bold text-white bg-[#B11125] px-4 py-2 rounded hover:bg-red-400 hover:text-black";
+    prevButton.className = "prev-button text-sm font-bold text-white bg-[#EF233C] px-4 py-2 rounded hover:brightness-110";
     prevButton.addEventListener("click", () => {
         currentImage = (currentImage - 1 + listing.media.length) % listing.media.length;
         updateImage();
@@ -144,10 +144,17 @@ const displaySingleListing = (listing) => {
     bidButton.className = "bidButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-red-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-accentRed";
 
     const isLoggedIn = localStorage.getItem("token");
-
+    const currentUserId = JSON.parse(localStorage.getItem("userInfo")); 
+    const isUserListing = listing.seller.name === currentUserId.name
+    
     if (!isLoggedIn) {
         bidButton.disabled = true;
         bidButton.title = "You must be logged in to place a bid.";
+        bidButton.classList.add("cursor-not-allowed", "opacity-50");
+        bidInput.disabled = true;
+    } else if (isUserListing) {
+        bidButton.disabled = true;
+        bidButton.title = "You cannot bid on your own listing!";
         bidButton.classList.add("cursor-not-allowed", "opacity-50");
         bidInput.disabled = true;
     } else {
@@ -214,6 +221,7 @@ const displaySingleListing = (listing) => {
     );
     singleListingContainer.appendChild(container);
 };
+
 
 
 
