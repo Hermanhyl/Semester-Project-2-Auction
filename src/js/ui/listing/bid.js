@@ -24,7 +24,6 @@ export const showBidders = async (id) => {
 
     
         const bidders = await fetchBidders(id);
-        console.log("Bidders fetched:", bidders);
 
         if (bidders.length === 0) {
             biddersList.innerHTML = "<p>No bids yet.</p>";
