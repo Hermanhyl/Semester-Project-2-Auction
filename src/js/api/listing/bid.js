@@ -1,7 +1,6 @@
 import { API_AUCTION_LISTINGS } from "../constants";
 import { headers } from "../headers";
 
-// Fix
 
 export const fetchBid = async (amount, id) => {
     
