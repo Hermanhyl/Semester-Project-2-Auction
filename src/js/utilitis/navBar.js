@@ -11,6 +11,8 @@ export function generateNavbar() {
         return;
     }
 
+    const isLoggedIn = Boolean(localStorage.getItem("token"));
+
     const navContainer = document.createElement("nav");
     navContainer.className = "navContainer p-4 shadow-lg text-black flex justify-between items-center max-w-screen-lg mx-auto";
 
@@ -30,8 +32,7 @@ export function generateNavbar() {
 
         const isActive = 
             (item.link === "/" && window.location.pathname === "/") || 
-            (item.link !== "/" && window.location.pathname.startsWith(item.link)); 
-
+            (item.link !== "/" && window.location.pathname.startsWith(item.link));
 
         const icon = document.createElement("i");
         icon.className = item.iconSolid;
@@ -43,9 +44,15 @@ export function generateNavbar() {
         text.className = "hidden md:inline-block text-lg font-medium transition-colors duration-300";
         text.style.color = isActive ? "#B11125" : "#8D99AE";
 
+        if (!isLoggedIn && (item.link === "/profile/" || item.link === "/post/create/")) {
+            navLink.classList.add("cursor-not-allowed", "opacity-50");
+            navLink.title = "You must be logged in to access this section.";
+            navLink.addEventListener("click", (e) => e.preventDefault());
+        }
+
         navLink.addEventListener("mouseenter", () => {
-            icon.style.color = "#B11125";
-            text.style.color = "#B11125";
+            icon.style.color = isActive || isLoggedIn ? "#B11125" : "#8D99AE";
+            text.style.color = isActive || isLoggedIn ? "#B11125" : "#8D99AE";
         });
         navLink.addEventListener("mouseleave", () => {
             if (!isActive) {
@@ -66,8 +73,6 @@ export function generateNavbar() {
 
     const authButton = document.createElement("button");
     authButton.className = "authButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-accentRed/90 focus:outline-none focus:ring-2 focus:ring-accentRed";
-
-    const isLoggedIn = Boolean(localStorage.getItem("token"));
     authButton.textContent = isLoggedIn ? "Logout" : "Login";
     authButton.addEventListener("click", () => {
         if (isLoggedIn) {
@@ -78,16 +83,8 @@ export function generateNavbar() {
         }
     });
 
-    document.addEventListener("click", (event) => {
-        const logoutButton = event.target.closest("#logoutBtn");
-        if (logoutButton) {
-            onLogout();
-        }
-    });
-
     authContainer.appendChild(authButton);
     navContainer.appendChild(authContainer);
-
 
     navbar.appendChild(navContainer);
 }
