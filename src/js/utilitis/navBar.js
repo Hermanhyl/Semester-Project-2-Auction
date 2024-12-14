@@ -72,7 +72,7 @@ export function generateNavbar() {
     authContainer.className = "authContainer";
 
     const authButton = document.createElement("button");
-    authButton.className = "authButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-accentRed/90 focus:outline-none focus:ring-2 focus:ring-accentRed";
+    authButton.className = "authButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-red-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-accentRed";
     authButton.textContent = isLoggedIn ? "Logout" : "Login";
     authButton.addEventListener("click", () => {
         if (isLoggedIn) {
