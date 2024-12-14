@@ -66,7 +66,7 @@ export const displaySingleListing = (listing) => {
     });
 
     const buttonContainer = document.createElement("div");
-    buttonContainer.className = "flex justify-between items-center w-full mt-4"; 
+    buttonContainer.className = "flex justify-between items-center w-full mt-4";
 
     buttonContainer.appendChild(prevButton);
     buttonContainer.appendChild(nextButton);
@@ -86,9 +86,32 @@ export const displaySingleListing = (listing) => {
     description.innerText = listing.description || "No description provided.";
     description.className = "listing-description text-sm text-secondary leading-relaxed";
 
-    const endsAt = document.createElement("h4")
-        endsAt.innerText = listing.endsAt
-        endsAt.className = "endsAt mt-2"
+    const endsAt = document.createElement("h4");
+    endsAt.className = "endsAt mt-2";
+
+    // Countdown logic
+    const listingEndTime = new Date(listing.endsAt).getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = listingEndTime - now;
+
+        if (timeLeft < 0) {
+            clearInterval(countdownInterval);
+            endsAt.innerText = "Auction ended";
+            return;
+        }
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        endsAt.innerText = `Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initialize countdown immediately
 
     const currentBid = document.createElement("p");
     currentBid.className = "current-bid text-base font-semibold text-primary";
@@ -115,33 +138,40 @@ export const displaySingleListing = (listing) => {
     const bidButton = document.createElement("button");
     bidButton.type = "submit";
     bidButton.innerText = "Place Bid";
-    bidButton.className = "bidButton bg-[#EF233C] text-white py-2 px-4rounded-md hover:bg-red-400 focus:outline-none focus:ring-2focus:ring-accentRed";
+    bidButton.className = "bidButton bg-[#EF233C] text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed";
+
+    const isLoggedIn = localStorage.getItem("token");
+
+    if (!isLoggedIn) {
+        bidButton.disabled = true;
+        bidButton.title = "You must be logged in to place a bid.";
+        bidButton.classList.add("cursor-not-allowed", "opacity-50");
+        bidInput.disabled = true;
+    } else {
+        bidForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (!bidInput.value || bidInput.value <= 0) {
+                alert("Please enter a valid bid amount before placing your bid.");
+                return;
+            }
+
+            try {
+                await onBid(event, listing.id);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            } catch (error) {
+                console.error("Failed to place bid:", error);
+                alert("There was an issue placing your bid. Please try again.");
+            }
+        });
+    }
 
     bidForm.appendChild(bidInput);
     bidForm.appendChild(bidButton);
 
-    bidForm.addEventListener("submit", async (event) => {
-        event.preventDefault(); 
-
-        if (!bidInput.value || bidInput.value <= 0) {
-            alert("Please enter a valid bid amount before placing your bid.");
-            return;  
-        }
-
-        try {
-            await onBid(event, listing.id);
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        } catch (error) {
-            console.error("Failed to place bid:", error);
-            alert("There was an issue placing your bid. Please try again.");
-        }
-    });
-
     const openModal = document.getElementById("biddersModal");
-
-    const isLoggedIn = localStorage.getItem("token");
 
     const viewBiddersButton = document.createElement("button");
     viewBiddersButton.innerText = "View Bidders";
@@ -168,7 +198,7 @@ export const displaySingleListing = (listing) => {
 
     container.append(
         image,
-        buttonContainer, 
+        buttonContainer,
         sellerName,
         title,
         description,
@@ -181,6 +211,7 @@ export const displaySingleListing = (listing) => {
     );
     singleListingContainer.appendChild(container);
 };
+
 
 
 

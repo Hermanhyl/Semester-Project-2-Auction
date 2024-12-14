@@ -34,9 +34,32 @@ export const displayMyListings = (profileData) => {
         description.innerText = listing.description || "No Description";
         description.className = "listingDescription text-gray-600 text-sm mb-4 line-clamp-2";
 
-        const endsAt = document.createElement("p");
-        endsAt.innerText = listing.endsAt
-        endsAt.className = "text-black mb-4"
+        const endsAt = document.createElement("h4");
+        endsAt.className = "endsAt mt-2 text-black";
+
+        // Countdown logic
+        const listingEndTime = new Date(listing.endsAt).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = listingEndTime - now;
+
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                endsAt.innerText = "Auction ended";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            endsAt.innerText = `Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
 
         const viewButton = document.createElement("button");
         viewButton.innerText = "View";
