@@ -15,11 +15,11 @@ function handleLoginClick() {
     }
 }
 
-export async function login({email, password}) {
+export async function login({ email, password }) {
     const body = {
         email: email,
         password: password
-    }
+    };
     try {
         const response = await fetch(API_AUTH_LOGIN, {
             method: "POST",
@@ -29,14 +29,20 @@ export async function login({email, password}) {
 
         if (response.ok) {
             const data = await response.json();
-            
+
             localStorage.setItem('userInfo', JSON.stringify(data.data));
             localStorage.setItem('token', JSON.stringify(data.data.accessToken));
-            window.location.href = "/"
+            window.location.href = "/";
             alert("Successfully logged in");
-        } 
+        } else if (response.status === 401) {
+            alert("Incorrect email or password. Please try again.");
+        } else {
+            
+            const errorMessage = await response.text();
+            alert(`Error: ${errorMessage || "An unexpected error occurred."}`);
+        }
     } catch (error) {
-        console.error("Error during login")
-        alert("An error has occured")
+        console.error("Error during login:", error);
+        alert("An error has occurred. Please check your internet connection and try again.");
     }
 }
