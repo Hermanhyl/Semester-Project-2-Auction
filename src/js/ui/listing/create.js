@@ -24,8 +24,6 @@ export async function onCreateListing(event) {
         media
     };
 
-    console.log("Payload being sent:", createData);
-
     try {
         const result = await createListing(
             createData.title,
@@ -37,11 +35,15 @@ export async function onCreateListing(event) {
 
         if (result) {
             console.log("Listing created successfully:", result);
+            alert("Listing successfully created!");
+            window.location.href = "/";
         } else {
             console.error("Failed to create listing. Please check your input.");
+            alert("Failed to create listing. Please check your input.");
         }
     } catch (error) {
         console.error("Error during listing creation:", error);
+        alert("An error occurred while creating the listing. Please try again.");
     }
 }
 
