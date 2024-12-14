@@ -53,7 +53,6 @@ export async function readProfileWins(name) {
 
         const data = await response.json();
         const wins = data.data;
-        console.log("won auctions",wins);
         
         return wins; 
         
