@@ -41,7 +41,7 @@ export const displayWins = (profileData) => {
 
         const viewButton = document.createElement("button");
         viewButton.innerText = "View Listing";
-        viewButton.className = "viewButton bg-[#B11125] text-white py-2 px-4 rounded-lg hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed";
+        viewButton.className = "viewButton bg-[#B11125] text-white py-2 px-4 rounded-lg hover:bg-red-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-accentRed";
 
         viewButton.addEventListener("click", () => {
             window.location.href = `/post/?id=${win.id}`;
