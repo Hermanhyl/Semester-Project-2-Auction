@@ -47,7 +47,6 @@ export const fetchBidders = async (name) => {
         }
 
         const data = await response.json();
-        console.log("data", data);
         return data.data.bids || []; 
 
     } catch (error) {
