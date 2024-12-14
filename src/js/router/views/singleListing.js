@@ -23,11 +23,11 @@ const initializeModalListeners = () => {
 
 document.addEventListener("DOMContentLoaded", initializeModalListeners);
 
-export const displaySingleListing = (listing) => {
+const displaySingleListing = (listing) => {
     const singleListingContainer = document.getElementById("singleListingContainer");
 
     if (!singleListingContainer) {
-        console.error("No container with id `singleListingContainer` found.");
+        console.error("No container with id singleListingContainer found.");
         return;
     }
 
@@ -51,7 +51,7 @@ export const displaySingleListing = (listing) => {
 
     const nextButton = document.createElement("button");
     nextButton.innerText = "Next";
-    nextButton.className = "next-button text-sm font-bold text-white bg-[#EF233C] px-4 py-2 rounded hover:brightness-110";
+    nextButton.className = "next-button text-sm font-bold text-white bg-[#B11125] px-4 py-2 rounded hover:bg-red-400 hover:text-black";
     nextButton.addEventListener("click", () => {
         currentImage = (currentImage + 1) % listing.media.length;
         updateImage();
@@ -59,7 +59,7 @@ export const displaySingleListing = (listing) => {
 
     const prevButton = document.createElement("button");
     prevButton.innerText = "Prev";
-    prevButton.className = "prev-button text-sm font-bold text-white bg-[#EF233C] px-4 py-2 rounded hover:brightness-110";
+    prevButton.className = "prev-button text-sm font-bold text-white bg-[#B11125] px-4 py-2 rounded hover:bg-red-400 hover:text-black";
     prevButton.addEventListener("click", () => {
         currentImage = (currentImage - 1 + listing.media.length) % listing.media.length;
         updateImage();
@@ -68,8 +68,11 @@ export const displaySingleListing = (listing) => {
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "flex justify-between items-center w-full mt-4";
 
-    buttonContainer.appendChild(prevButton);
-    buttonContainer.appendChild(nextButton);
+    // Only show buttons if there is more than one image
+    if (listing.media && listing.media.length > 1) {
+        buttonContainer.appendChild(prevButton);
+        buttonContainer.appendChild(nextButton);
+    }
 
     const container = document.createElement("div");
     container.className = "listing-container p-6 bg-[#2B2D42] mb-20 shadow rounded-lg max-w-2xl mx-auto space-y-4";
@@ -138,7 +141,7 @@ export const displaySingleListing = (listing) => {
     const bidButton = document.createElement("button");
     bidButton.type = "submit";
     bidButton.innerText = "Place Bid";
-    bidButton.className = "bidButton bg-[#EF233C] text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed";
+    bidButton.className = "bidButton bg-[#B11125] text-white py-2 px-4 rounded-md hover:bg-red-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-accentRed";
 
     const isLoggedIn = localStorage.getItem("token");
 
@@ -211,6 +214,7 @@ export const displaySingleListing = (listing) => {
     );
     singleListingContainer.appendChild(container);
 };
+
 
 
 
