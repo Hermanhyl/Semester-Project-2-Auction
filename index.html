@@ -48,26 +48,26 @@
         <button
           type="button"
           id="search-button"
-          class="bg-[#B11125] text-white font-semibold items-center px-4 rounded-[20px] h-12 flex items-centerd hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed">
+          class="bg-[#B11125] text-white font-semibold items-center px-4 rounded-[20px] h-12 flex items-centerd hover:bg-red-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-accentRed">
           Search
         </button>
       </div>
     </form>
       <!-- Search result message -->
-      <p id="search-result-message" class="hidden text-darkSlate text-body">
+      <p id="search-result-message" class="hidden text-black justify-center text-darkSlate text-body">
         Results will be displayed here.
       </p>
     </form>
     
     <div id="listingContainer" class=" grid grid-cols-1 sm:grid-cols-2 gap-6 p-5 max-w-screen-lg mx-auto my-0 min-h-screen "></div>
 
-    <div id="biddersModal" class="modal hidden z-50 text-black">
+    <div id="biddersModal" class="modal hidden z-50 items-center text-center text-black">
       <div class="modal-content">
           <span id="closeModal" class="close-button">&times;</span>
-          <h2>Previous Bidders</h2>
-          <div id="biddersList"></div>
+          <h2>Previous Bidders:</h2>
+          <div id="biddersList" class="text-base text-gray-700 space-y-2 mt-2"></div>
       </div>
-  </div>
+    </div>
      
   <div id="paginationControls" class="pagination flex items-center justify-center space-x-4 py-4">
     <button 
