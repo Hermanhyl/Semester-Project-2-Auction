@@ -28,7 +28,7 @@ export const displayProfile = async () => {
     avatarContainer.className = "absolute left-1/4 sm:left-1/3 transform -translate-x-1/2 mt-[-50px]";
 
     const avatar = document.createElement("img");
-    avatar.className = "avatar border-4 border-white w-28 h-28 rounded-full object-cover";
+    avatar.className = "avatar border-4 border-white w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full object-cover";
     avatar.src = data.avatar?.url || "default-avatar.png";
     avatar.alt = data.avatar?.alt || "User avatar";
 
@@ -45,7 +45,7 @@ export const displayProfile = async () => {
 
     const editButton = document.createElement("button");
     editButton.innerText = "Edit Profile";
-    editButton.className = "edit bg-[#B11125] text-white py-2 px-6 rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-accentRed";
+    editButton.className = "edit bg-[#B11125] text-white py-2 px-6 rounded-md hover:bg-red-400 focus:outline-none hover:text-black focus:ring-2 focus:ring-accentRed";
     editButton.addEventListener("click", () => {
         window.location.href = "/profile/edit/";
     });
