@@ -4,6 +4,19 @@ import { readProfile, readProfileWins } from "../../api/profile/read";
 import { authGuard } from "../../utilitis/authGuard.js";
 
 
+/**
+ * Asynchronously displays the user's profile information on the page.
+ * 
+ * This function retrieves the user's information from localStorage, fetches
+ * additional profile data, and dynamically creates and appends DOM elements
+ * to display the user's banner, avatar, name, bio, and credits. It also
+ * provides an "Edit Profile" button that redirects to the profile editing page.
+ * 
+ * @async
+ * @function displayProfile
+ * @returns {Promise<void>} Resolves when the profile has been rendered to the DOM.
+ */
+
 export const displayProfile = async () => {
     const profileContainer = document.getElementById("profileContainer");
 
@@ -87,6 +100,19 @@ runProfile()
 
 
 // DISPLAY FUNCTION FOR WON AUCTIONS
+/**
+ * Asynchronously retrieves and displays the user's auction wins.
+ * 
+ * This function fetches the current user's information from localStorage,
+ * retrieves their auction wins using `readProfileWins`, and displays them
+ * using `displayWins`. If an error occurs at any step, it logs the error
+ * and displays an error message in the "winsContainer" element.
+ * 
+ * @async
+ * @function runWins
+ * @returns {Promise<void>} Resolves when the wins are displayed or an error message is shown.
+ */
+
 async function runWins() {
     try {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -112,6 +138,15 @@ runWins();
 
 
 // DISPLAY MY LISTINGS HERE...
+/**
+ * Fetches the current user's profile data and displays their listings.
+ * Handles errors by logging them and displaying an error message in the listings container.
+ *
+ * @async
+ * @function runListings
+ * @returns {Promise<void>} Resolves when the listings have been processed and displayed.
+ */
+
 async function runListings() {
     try {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));

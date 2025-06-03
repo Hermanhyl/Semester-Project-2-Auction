@@ -4,6 +4,19 @@ import { authGuard } from "../../utilitis/authGuard";
 
 const listingId = new URLSearchParams(window.location.search).get("id");
 
+/**
+ * Asynchronously loads a single listing by its ID and populates the update form fields with the listing's data.
+ * 
+ * - Fills in title, description, end date, and tags.
+ * - Populates up to 3 image and alt text fields from the listing's media.
+ * - Handles missing or incomplete listing data gracefully.
+ * - Logs errors to the console if the listing cannot be loaded.
+ * 
+ * @async
+ * @function
+ * @returns {Promise<void>} Resolves when the listing data has been loaded and form fields populated.
+ */
+
 async function loadListing() {
     try {
         const listing = await readSingleListing(listingId);

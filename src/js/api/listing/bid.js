@@ -2,6 +2,17 @@ import { API_AUCTION_LISTINGS } from "../constants";
 import { headers } from "../headers";
 
 
+/**
+ * Places a bid on a specific auction listing.
+ *
+ * @async
+ * @function fetchBid
+ * @param {number} amount - The amount to bid.
+ * @param {string} id - The ID of the listing to place a bid on.
+ * @returns {Promise<Object>} The response data from the API after placing the bid.
+ * @throws {Error} If the listing ID is not provided or the API call fails.
+ */
+
 export const fetchBid = async (amount, id) => {
     
     if (!id) {
@@ -33,6 +44,16 @@ export const fetchBid = async (amount, id) => {
         throw error;
     }
 };
+
+/**
+ * Fetches the list of bidders for a specific auction listing by name.
+ *
+ * @async
+ * @function fetchBidders
+ * @param {string} name - The name or identifier of the auction listing.
+ * @returns {Promise<Array>} A promise that resolves to an array of bids for the specified listing.
+ * If an error occurs, an empty array is returned.
+ */
 
 export const fetchBidders = async (name) => {
     try {

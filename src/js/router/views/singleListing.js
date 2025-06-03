@@ -1,6 +1,15 @@
 import { readSingleListing } from "../../api/listing/read";
 import { onBid, showBidders } from "../../ui/listing/bid";
 
+/**
+ * Initializes event listeners for a modal dialog.
+ * - Closes the modal when the close button is clicked.
+ * - Closes the modal when clicking outside the modal content (on the modal background).
+ * Logs an error if the modal or close button elements are not found in the DOM.
+ *
+ * @function
+ */
+
 const initializeModalListeners = () => {
     const closeModalButton = document.getElementById("closeModal");
     const biddersModal = document.getElementById("biddersModal");
@@ -22,6 +31,26 @@ const initializeModalListeners = () => {
 };
 
 document.addEventListener("DOMContentLoaded", initializeModalListeners);
+
+/**
+ * Renders a detailed view of a single auction listing, including images, seller info, description, countdown timer, current bid, bid form, and action buttons.
+ *
+ * @function
+ * @param {Object} listing - The listing object containing all relevant data for the auction item.
+ * @param {string} listing.id - The unique identifier for the listing.
+ * @param {string} listing.title - The title of the listing.
+ * @param {string} listing.description - The description of the listing.
+ * @param {Object} listing.seller - The seller information.
+ * @param {string} listing.seller.name - The name of the seller.
+ * @param {Array<Object>} listing.media - Array of media objects for the listing.
+ * @param {string} listing.media[].url - The URL of the media image.
+ * @param {string} [listing.media[].alt] - The alt text for the media image.
+ * @param {string} listing.endsAt - The ISO date string representing when the auction ends.
+ * @param {Array<Object>} listing.bids - Array of bid objects for the listing.
+ * @param {number} listing.bids[].amount - The amount of the bid.
+ *
+ * @returns {void}
+ */
 
 const displaySingleListing = (listing) => {
     const singleListingContainer = document.getElementById("singleListingContainer");
@@ -228,6 +257,15 @@ const displaySingleListing = (listing) => {
 
 
 initializeModalListeners();
+
+/**
+ * Asynchronously loads and displays a single listing on the page.
+ * Handles errors by displaying an error message in the designated container.
+ *
+ * @async
+ * @function runPage
+ * @returns {Promise<void>} Resolves when the listing is loaded and displayed, or an error message is shown.
+ */
 
 async function runPage() {
     try {

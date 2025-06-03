@@ -1,3 +1,9 @@
+/**
+ * Creates and appends a styled footer element to the document body.
+ * The footer contains copyright information and is styled to appear at the bottom of the page.
+ *
+ * @function
+ */
 export function createFooter() {
     const footer = document.createElement('footer');
     footer.style.backgroundColor = '#2B2D42'; 

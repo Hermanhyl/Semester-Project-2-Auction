@@ -1,6 +1,16 @@
 import { API_AUCTION_LISTINGS } from "../constants";
 import { headers } from "../headers";
 
+/**
+ * Fetches a single auction listing by its ID from the query parameters.
+ * Includes seller and bids information in the response.
+ *
+ * @async
+ * @function readSingleListing
+ * @throws {Error} If the ID is missing in the query parameters or if the fetch fails.
+ * @returns {Promise<Object|null>} The listing object if successful, or null if the fetch fails.
+ */
+
 export async function readSingleListing() {
 
     const id = new URLSearchParams(window.location.search).get("id");
@@ -38,6 +48,19 @@ export async function readSingleListing() {
         throw error; // Propagate the error for further handling
     }
 }
+
+/**
+ * Fetches auction listings from the API with optional pagination, sorting, and filtering by tag.
+ *
+ * @async
+ * @param {number} [limit=12] - The maximum number of listings to fetch per page.
+ * @param {number} [page=1] - The page number to fetch.
+ * @param {string} [sort] - The field to sort the listings by.
+ * @param {string} [sortOrder] - The order to sort the listings ('asc' or 'desc').
+ * @param {string} [tag] - Optional tag to filter listings.
+ * @returns {Promise<Array>} A promise that resolves to an array of listing objects.
+ * @throws {Error} Throws an error if the fetch operation fails.
+ */
 
 export async function readListings(limit= 12, page = 1, sort, sortOrder, tag,) {
     try {

@@ -1,5 +1,12 @@
 import { onBid, showBidders } from "../../ui/listing/bid";
 
+/**
+ * Initializes event listeners for a modal dialog.
+ * - Closes the modal when the close button is clicked.
+ * - Closes the modal when clicking outside the modal content (on the modal background).
+ * Logs an error if the modal or close button elements are not found in the DOM.
+ */
+
 const initializeModalListeners = () => {
     const closeModalButton = document.getElementById("closeModal");
     const biddersModal = document.getElementById("biddersModal");
@@ -21,6 +28,26 @@ const initializeModalListeners = () => {
 };
 
 document.addEventListener("DOMContentLoaded", initializeModalListeners);
+
+/**
+ * Renders a list of auction listings into the DOM, including images, seller info, title, description,
+ * countdown timer, current bid, bid form, and action buttons. Handles bid submission and modal display for bidders.
+ *
+ * @param {Array<Object>} listings - Array of listing objects to display. Each listing should contain:
+ *   @param {string} listings[].id - Unique identifier for the listing.
+ *   @param {string} listings[].title - Title of the listing.
+ *   @param {string} listings[].description - Description of the listing.
+ *   @param {Object} [listings[].seller] - Seller information.
+ *   @param {string} [listings[].seller.name] - Name of the seller.
+ *   @param {Array<Object>} [listings[].media] - Array of media objects for the listing.
+ *   @param {string} [listings[].media[].url] - URL of the media image.
+ *   @param {string} [listings[].media[].alt] - Alt text for the media image.
+ *   @param {string} listings[].endsAt - ISO date string for when the auction ends.
+ *   @param {Array<Object>} [listings[].bids] - Array of bid objects for the listing.
+ *   @param {number} [listings[].bids[].amount] - Amount of the bid.
+ *
+ * @returns {void}
+ */
 
 export const displayListings = (listings) => {
     const listingContainer = document.getElementById("listingContainer");
