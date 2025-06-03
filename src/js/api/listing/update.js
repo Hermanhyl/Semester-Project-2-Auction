@@ -17,25 +17,36 @@ import { headers } from "../headers";
  * @returns {Promise<Object|undefined>} The updated listing data if successful, otherwise undefined.
  */
 
-export async function updateListing(id, {title, description, endsAt, tags, media}) {
-    id = new URLSearchParams(window.location.search).get('id');
+export async function updateListing(id, { title, description, endsAt, tags, media }) {
+    if (!id) {
+        id = new URLSearchParams(window.location.search).get("id");
+    }
 
-    try { 
+    if (!id) {
+        console.error("No listing ID provided.");
+        alert("Listing ID is missing. Cannot update.");
+        return;
+    }
+
+    try {
         const response = await fetch(`${API_AUCTION_LISTINGS}/${id}`, {
             method: "PUT",
             headers: headers(),
-            body: JSON.stringify({title, description, endsAt, tags, media})
+            body: JSON.stringify({ title, description, endsAt, tags, media }),
         });
 
         if (!response.ok) {
-            alert("Failed to update listing, sure this is your listing?")
+            alert("Failed to update the listing. Are you sure you are the owner?");
+            const errorData = await response.json();
+            console.error("Update error:", errorData);
         } else {
-            alert("Post successfully updatet")
+            alert("Post successfully updated.");
             const data = await response.json();
             return data;
         }
-        
+
     } catch (error) {
-        console.error("Failed to update the listing", error)
+        console.error("Failed to update the listing:", error);
+        alert("An error occurred while updating. Please try again.");
     }
 }

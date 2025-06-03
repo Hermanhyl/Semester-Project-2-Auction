@@ -56,6 +56,11 @@ export const fetchBid = async (amount, id) => {
  */
 
 export const fetchBidders = async (name) => {
+    if (!name) {
+        console.warn("fetchBidders called without a listing name.");
+        return [];
+    }
+
     try {
         const response = await fetch(`${API_AUCTION_LISTINGS}/${name}?_bids=true`, {
             method: "GET",
@@ -67,7 +72,7 @@ export const fetchBidders = async (name) => {
         }
 
         const data = await response.json();
-        return data.data.bids || []; 
+        return data.data?.bids || [];
 
     } catch (error) {
         console.error("Error fetching bidders:", error);

@@ -42,10 +42,13 @@ function handleLoginClick() {
  */
 
 export async function login({ email, password }) {
-    const body = {
-        email: email,
-        password: password
-    };
+    if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+    }
+
+    const body = { email, password };
+
     try {
         const response = await fetch(API_AUTH_LOGIN, {
             method: "POST",
@@ -56,19 +59,19 @@ export async function login({ email, password }) {
         if (response.ok) {
             const data = await response.json();
 
-            localStorage.setItem('userInfo', JSON.stringify(data.data));
-            localStorage.setItem('token', JSON.stringify(data.data.accessToken));
-            window.location.href = "/";
+            localStorage.setItem("userInfo", JSON.stringify(data.data));
+            localStorage.setItem("token", data.data.accessToken);
             alert("Successfully logged in");
+            window.location.href = "/";
         } else if (response.status === 401) {
             alert("Incorrect email or password. Please try again.");
         } else {
-            
             const errorMessage = await response.text();
-            alert(`Error: ${errorMessage || "An unexpected error occurred."}`);
+            alert(`Login failed: ${errorMessage || "Unexpected server error."}`);
         }
+
     } catch (error) {
         console.error("Error during login:", error);
-        alert("An error has occurred. Please check your internet connection and try again.");
+        alert("Network error. Please check your connection and try again.");
     }
 }

@@ -1,6 +1,6 @@
 import { API_KEY } from "./constants";
 
-const accessToken = JSON.parse(localStorage.getItem('token'));
+const accessToken = localStorage.getItem('token');
 
 /**
  * Constructs and returns a Headers object with necessary authentication and content type headers.
