@@ -1,3 +1,15 @@
+/**
+ * Generates and renders the navigation bar dynamically based on the user's authentication status.
+ * 
+ * - Displays navigation items (Home, Profile, Create Listing) with icons.
+ * - Highlights the active navigation item based on the current URL.
+ * - Disables Profile and Create Listing links for unauthenticated users.
+ * - Shows a Login or Logout button depending on authentication state.
+ * - Handles navigation item hover effects and authentication button actions.
+ * 
+ * @function
+ * @returns {void}
+ */
 export function generateNavbar() {
     const navbarItems = [
         { name: "Home", link: "/", iconSolid: "fa-solid fa-house-chimney" },

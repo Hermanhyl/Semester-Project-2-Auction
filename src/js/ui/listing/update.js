@@ -1,6 +1,19 @@
 import { updateListing } from "../../api/listing/update";
 
 
+/**
+ * Handles the update of a listing by processing form data and sending an update request.
+ *
+ * @async
+ * @param {Event} event - The form submission event.
+ * @param {string|number} postId - The unique identifier of the listing to update.
+ * @returns {Promise<void>} Resolves when the listing has been updated.
+ *
+ * @description
+ * Extracts form data, constructs a media array from image and alt fields,
+ * builds an editInfo object with updated listing details, and calls the API
+ * to update the listing.
+ */
 export async function onUpdateListing(event, postId) {
     event.preventDefault();
 

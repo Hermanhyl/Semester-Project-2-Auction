@@ -1,5 +1,16 @@
 import { createListing } from "../../api/listing/create";
 
+/**
+ * Handles the creation of a new listing from a form submission event.
+ *
+ * Extracts form data, constructs the listing object, and calls the `createListing` API.
+ * Handles success and error cases with user feedback and navigation.
+ *
+ * @async
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>}
+ */
+
 export async function onCreateListing(event) {
     event.preventDefault();
 

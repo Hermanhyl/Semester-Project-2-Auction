@@ -2,6 +2,21 @@ import { API_AUCTION_LISTINGS } from "../constants";
 import { headers } from "../headers";
 
 
+/**
+ * Updates an auction listing with the provided details.
+ *
+ * @async
+ * @function updateListing
+ * @param {string} id - The ID of the listing to update. (Note: This parameter is overwritten by the 'id' from the URL query string.)
+ * @param {Object} params - The listing details to update.
+ * @param {string} params.title - The new title of the listing.
+ * @param {string} params.description - The new description of the listing.
+ * @param {string} params.endsAt - The new end date/time for the listing.
+ * @param {Array<string>} params.tags - The updated tags for the listing.
+ * @param {Array<string>} params.media - The updated media URLs for the listing.
+ * @returns {Promise<Object|undefined>} The updated listing data if successful, otherwise undefined.
+ */
+
 export async function updateListing(id, {title, description, endsAt, tags, media}) {
     id = new URLSearchParams(window.location.search).get('id');
 

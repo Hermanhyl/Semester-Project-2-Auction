@@ -5,6 +5,19 @@ import { createFooter } from "./js/utilitis/footer";
 import { generateNavbar } from "./js/utilitis/navBar";
 
 
+/**
+ * Initializes the main application logic.
+ * 
+ * - Routes the application based on the current window location.
+ * - Generates the navigation bar.
+ * - Sets up the logout event listener.
+ * - Creates the footer.
+ * 
+ * @async
+ * @function
+ * @returns {Promise<void>} Resolves when all initialization steps are complete.
+ */
+
 async function loadMain() {
 
     await router(window.location.pathname);

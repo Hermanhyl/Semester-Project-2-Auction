@@ -2,6 +2,23 @@ import { searchListings } from "../api/profile/read";
 import { runPage } from "../router/views/home";
 
 
+/**
+ * Handles the search functionality for the auction listings page.
+ * 
+ * Attaches event listeners to the search form and search button. When a search is submitted,
+ * it prevents the default form submission, validates the input, displays appropriate messages,
+ * clears previous results, fetches new search results, and updates the UI accordingly.
+ * 
+ * @async
+ * @function searchHandel
+ * @returns {Promise<void>} Resolves when the search handling is complete.
+ * 
+ * @listens submit on HTMLFormElement (searchform)
+ * @listens click on HTMLElement (search-button)
+ * 
+ * @throws Will display an error message if the search operation fails.
+ */
+
 export async function searchHandel() {
     const form = document.forms.searchform;
     const displaySearchWord = document.getElementById("search-result-message");

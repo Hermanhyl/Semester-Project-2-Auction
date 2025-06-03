@@ -6,6 +6,16 @@ import { searchHandel } from "../../utilitis/search";
 let currentPage = 1;
 const listingsPerPage = 12; 
 
+/**
+ * Loads and displays a page of listings, handling pagination and errors.
+ *
+ * @async
+ * @function runPage
+ * @param {number} [page=1] - The current page number to display.
+ * @param {Array<Object>} [listings=null] - Optional pre-fetched listings to display. If not provided, listings will be fetched.
+ * @returns {Promise<void>} Resolves when the page has been loaded and displayed.
+ */
+
 export async function runPage(page = 1, listings = null) {
     try {
         const listingContainer = document.getElementById("listingContainer");
@@ -23,6 +33,13 @@ export async function runPage(page = 1, listings = null) {
 }
 
 runPage();
+
+/**
+ * Updates the pagination controls (previous/next buttons and current page display)
+ * based on the current page number.
+ *
+ * @param {number} page - The current page number to display and use for enabling/disabling controls.
+ */
 
 function updatePaginationControls(page) {
     const totalListings = 100; 

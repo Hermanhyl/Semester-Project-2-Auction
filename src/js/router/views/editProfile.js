@@ -2,6 +2,18 @@ import { readProfile } from "../../api/profile/read";
 import { updateProfile } from "../../api/profile/update";
 
 
+/**
+ * Loads the user's profile information and populates the edit profile form fields.
+ * 
+ * Retrieves the current user's information from localStorage, fetches the profile data,
+ * and updates the form fields with the profile details. If the user is not logged in or
+ * the username is unavailable, redirects to the login page. Handles errors and logs them to the console.
+ * 
+ * @async
+ * @function loadingProfile
+ * @returns {Promise<void>} Resolves when the profile is loaded and form is populated.
+ */
+
 async function loadingProfile() {
 
     try {
@@ -34,6 +46,17 @@ async function loadingProfile() {
     }
 }
 }
+
+/**
+ * Handles the profile update form submission event.
+ * Prevents the default form submission, gathers form data,
+ * constructs the profile update payload, and calls the updateProfile API.
+ * Redirects to the profile page upon success.
+ *
+ * @async
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>}
+ */
 
 async function onUpdateProfile(event) {
     event.preventDefault(); 
